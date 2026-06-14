@@ -1,5 +1,6 @@
 import socket
 import time
+from datetime import datetime
 
 print("=" * 50)
 print("NetRecon - Network Reconnaissance Tool")
@@ -78,7 +79,10 @@ print("-" * 50)
 print("Scan Complete")
 print(f"Scan completed in {scan_duration:.2f} seconds")
 
-with open("report.txt", "w") as file:
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+filename = f"report_{timestamp}.txt"
+
+with open(filename, "w") as file:
     file.write("NetRecon Scan Report\n")
     file.write("=" * 40 + "\n")
     file.write(f"Target: {ip_address}\n")
@@ -93,4 +97,4 @@ with open("report.txt", "w") as file:
     else:
         file.write("No open ports found.\n")
 
-print("Report saved as report.txt")
+print(f"Report saved as {filename}")
